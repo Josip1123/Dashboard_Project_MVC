@@ -1,12 +1,11 @@
-
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace Dashboard_Project_MVC.Controllers;
 
-public class HomeController : Controller
+public class DashboardController : Controller
 {
-    public IActionResult Index()
+    public IActionResult Dashboard()
     {
         return View();
     }

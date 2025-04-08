@@ -1,0 +1,36 @@
+@{
+    ViewBag.Title = "Alpha";
+    Layout = "_Layout";
+    
+    var login = Url.Action("UserLogin", "Login");
+    var memberLogin = Url.Action("MemberLogin", "Login");
+    var signup = Url.Action("Signup", "Login");
+}
+<main class="landing">
+    <div class="hero-content wrapper">
+        <div class="welcome-to-product">
+            <div class="landing-logo">
+                <img src="~/img/full-darkmode.svg" alt="" />
+            </div>
+            <h1>
+                Industry leading <br />
+                Project Manager App
+            </h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam beatae possimus deserunt voluptatibus sapiente veniam? Dolorem voluptatum corrupti odit doloremque molestias ipsum vero quae? Soluta consectetur.</p>
+        </div>
+        <div class="landing-login-links">
+            <div class="link-container">
+                <div class="landing-link btn-primary btn">
+                    <a href="@signup">Sign Up </a>
+                </div>
+                <div class="landing-link btn-primary btn">
+                    <a href="@login" class>Sign In </a>
+                </div>
+            </div>
+
+            <div class="admin-login">
+                <p>Admin? <span><a href="@memberLogin" >Login Here</a></span></p>
+            </div>
+        </div>
+    </div>
+</main>

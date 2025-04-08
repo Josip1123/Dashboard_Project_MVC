@@ -1,0 +1,89 @@
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "_Layout";
+}
+
+
+<div class="wrapper">
+    <div class="dashboard">
+        <div class="logo-container">
+            <a href="#">
+                <img src="~/img/Full.svg" alt="" class="logo" />
+            </a>
+        </div>
+        
+        @await Html.PartialAsync("Partials/_NavbarUser")
+
+        <div class="searchbar">
+            <input
+                type="search"
+                name="search"
+                id="search"
+                placeholder="Type project name to search..."
+            />
+        </div>
+        <div class="user-menu">
+            <i class="notification-icon"
+            ><img src="~/img/Notification.svg" alt=""
+                /></i>
+            <i class="darkmode-icon"
+            ><img src="~/img/Setting.svg" alt=""
+                /></i>
+            <div
+                class="profile-img-container"
+                role="button"
+                tabindex="0"
+                aria-label="Profile Menu"
+            >
+                <img
+                    src="~/img/user-placeholder.svg"
+                    alt=""
+                    class="user-profile"
+                />
+
+            </div>
+        </div>
+
+        <div class="section-add">
+            <h2>Projects</h2>
+            <button class="btn btn-primary">+ Add Project</button>
+        </div>
+        <div class="section-filter">
+            <ul>
+                <li
+                    role="button"
+                    tabindex="0"
+                    aria-label="All projects filter"
+                    class="filter-active"
+                >
+                    All
+                </li>
+                <li
+                    role="button"
+                    tabindex="0"
+                    aria-label="Started projects filter"
+                >
+                    Started
+                </li>
+                <li
+                    role="button"
+                    tabindex="0"
+                    aria-label="Completed projects filter"
+                >
+                    Completed
+                </li>
+            </ul>
+        </div>
+        <main class="dashboard-content">
+            @await Html.PartialAsync("Partials/_ProjectCard")
+            @await Html.PartialAsync("Partials/_ProjectCard")
+            @await Html.PartialAsync("Partials/_ProjectCard")
+            @await Html.PartialAsync("Partials/_ProjectCard")
+            @await Html.PartialAsync("Partials/_ProjectCard")
+            @await Html.PartialAsync("Partials/_ProjectCard")
+            @await Html.PartialAsync("Partials/_ProjectCard")
+            @await Html.PartialAsync("Partials/_ProjectCard")
+        </main>
+    </div>
+</div>
