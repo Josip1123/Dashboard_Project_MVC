@@ -16,9 +16,11 @@ public class ProjectEntity
     [Column(TypeName="nvarchar(150)")]
     public string Description { get; set; } = null!;
     
-    public string DateCreated { get; set; } = DateTime.Now.ToString("d");
+    public DateTime DateCreated { get; set; }
     
-    public string DateDue { get; set; } = null!;
+    public DateTime DateDue { get; set; } 
+
+    public bool IsCompleted { get; set; }
     
     //list of type Member
     

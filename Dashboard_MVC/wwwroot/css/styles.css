@@ -39,7 +39,6 @@ select {
   font: inherit;
 }
 
-/* Fonts */
 
 /* Variables */
 :root {
@@ -106,9 +105,14 @@ select {
 
 .form-wrapper {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   padding: 0.5rem;
-  background-color: var(--form-bg);
+  overflow: auto;
+  background-color: var(--black-transparent);
+  z-index: 99;
 }
 
 .center {
@@ -168,6 +172,15 @@ select {
     background: #fff;
     padding: 0 0.5rem;
   }
+}
+
+.hidden{
+  display: none;
+}
+
+.error{
+  color: lightcoral;
+  font-size: var(--smaller-font-size);
 }
 
 /* Main */
@@ -435,7 +448,6 @@ body:has(.dashboard) {
           bottom: -0.5rem;
           width: 100%;
           border-bottom: 5px solid var(--filter-link-color);
-          z-index: 99;
         }
       }
     }
@@ -444,8 +456,9 @@ body:has(.dashboard) {
   .dashboard-content {
     grid-area: dashboard;
     display: grid;
+    grid-auto-rows: 14rem;
     overflow-y: scroll;
-    gap: 1.5rem;
+    gap: 2.5rem;
     padding: 1rem;
 
     @media (min-width: 768px) {
@@ -454,7 +467,6 @@ body:has(.dashboard) {
 
     @media (min-width: 992px) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem 0;
     }
 
     @media (min-width: 1200px) {
@@ -462,12 +474,15 @@ body:has(.dashboard) {
     }
 
     .dashboard-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       border-radius: var(--form-border-radius);
       padding: 0.5rem;
       background-color: white;
       box-shadow: var(--box-shadow);
-      max-width: 16rem;
-      max-height: fit-content;
+      width: 16rem;
+      height: 14rem;
       margin: 0 auto;
 
       .card-header {
@@ -491,18 +506,30 @@ body:has(.dashboard) {
         font-size: var(--standard-font-size);
         font-weight: var(--normal);
         margin: 1rem 0 3rem 0;
+        overflow-wrap: break-word;
+        max-width: inherit;
+        overflow-y: scroll;
       }
 
       .card-footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
+     
 
         .time-remaining {
           background-color: var(--btn-grey);
-          padding: 0.5rem;
+          padding: 0.7rem;
           border-radius: var(--btn-border-radius);
           font-size: var(--smaller-font-size);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: .2rem;
+          img{
+            height: 1.2rem;
+            width: 1.2rem;
+          }
         }
 
         .members {
@@ -519,16 +546,15 @@ body:has(.dashboard) {
 }
 
 .add-form {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translate(-50%, 0);
   .form-group {
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
-  }
-
-  .date {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    height: 100%;
   }
 
   .name-wrapper {

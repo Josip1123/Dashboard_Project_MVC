@@ -1,0 +1,46 @@
+@model Dashboard_MVC.Views.Models.DashboardViewModel
+@using Business.Helpers
+
+@foreach(var project in Model.Projects.Reverse())
+{
+    <div class="dashboard-card">
+        <div class="card-header">
+            <div class="project-img-container">
+                <img
+                    class="project-img"
+                    src="~/img/Image.svg"
+                    alt=""
+                />
+            </div>
+            <div class="project-name-container">
+                <h4>@project.ProjectName</h4>
+                <h5>@project.ClientName</h5>
+            </div>
+        </div>
+        <p class="project-description">
+            @project.Description
+        </p>
+        <div class="card-footer">
+            <div class="time-remaining"><img alt="time-icon" src="~/img/clock-two-svgrepo-com.svg"/> @Countdown.GetTimeCountdown(project.DateCreated, project.DateDue)</div>
+            <div class="members">
+                <div class="members-img-container">
+                    <img
+                        src="~/img/user-placeholder.svg"
+                        alt=""
+                        class="user-profile"
+                    />
+                </div>
+
+                <div class="members-img-container">
+                    <img
+                        src="~/img/user-placeholder.svg"
+                        alt=""
+                        class="user-profile"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+

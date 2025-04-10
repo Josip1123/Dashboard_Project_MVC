@@ -60,17 +60,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\js\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Content Update="wwwroot\css\styles.css">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Data\Data.csproj" />
+      <ProjectReference Include="..\Business\Business.csproj" />
     </ItemGroup>
 
 </Project>

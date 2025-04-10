@@ -1,0 +1,87 @@
+@model Dashboard_MVC.Views.Models.DashboardViewModel
+
+<div class="center form-wrapper @(ViewBag.ShowProjectForm == true ? "" : "hidden")" id="projectForm">
+            <form class="add-form form"  asp-controller="Dashboard" asp-action="Create" method="post" >
+                <div class="form-header add-form-header">
+                    <h3 >Add Project</h3>
+                    <div
+                        class="close-btn btn"
+                        id="projectFormClose"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Close"
+                    >
+                        <img src="~/img/X.svg" alt="" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="add-img">
+                        <img src="~/img/X.svg" alt="" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ProjectName">Project Name:</label>
+                    <input
+                        asp-for="ProjectName"
+                        type="text"
+                        id="projectName"
+                        placeholder="Add project name"
+                    />
+                    <span class="error" asp-validation-for="ProjectName"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ClientName">Client Name:</label>
+                    <input
+                        asp-for="ClientName"
+                        type="text"
+                        id="clientName"
+                        placeholder="Add client name"
+                       
+                    />
+                    <span class="error" asp-validation-for="ClientName"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description">Description:</label>
+                    <textarea
+                        asp-for="Description"
+                        id="description"
+                        rows="4"
+                        maxlength="150"
+                        placeholder="Add a short description (max 120 characters)"
+                    ></textarea>
+                    <span class="error" asp-validation-for="Description"></span>
+                </div>
+                
+                    <div class="form-group">
+                        <label asp-for="DateDue">Date Due:</label>
+                        <input
+                            asp-for="DateDue"
+                            type="date"
+                            id="dateDue"
+                        />
+                    </div>
+
+                    
+               
+
+                <div class="form-group">
+                    <label asp-for="Price">Budget:</label>
+                    <input
+                        asp-for="Price"
+                        type="number"
+                        id="budget"
+                        placeholder="t.ex 1000"
+                    />
+                    <span class="error" asp-validation-for="Price"></span>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">
+                        Create
+                    </button>
+                </div>
+            </form>
+        </div>

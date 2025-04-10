@@ -1,0 +1,64 @@
+<div class="center form-wrapper">
+    <form class="add-form form">
+        <div class="form-header add-form-header">
+            <h3>Add Member</h3>
+            <div
+                class="close-btn btn"
+                role="button"
+                tabindex="0"
+                aria-label="Close"
+            >
+                <img src="~/img/X.svg" alt="" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="add-img member">
+                <img src="~/img/X.svg" alt="" />
+            </div>
+        </div>
+
+        <div class="name-wrapper">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="First name"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="last name"
+                    required
+                />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="members email adress" />
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" placeholder="+46 52 567 567" required />
+        </div>
+
+        <div class="form-group">
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" id="jobTitle" name="jobTitle" placeholder="tex CEO, Developer etc" required />
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Add Member</button>
+        </div>
+    </form>
+</div>
+

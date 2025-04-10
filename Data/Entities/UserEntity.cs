@@ -17,6 +17,5 @@ public class UserEntity
     public string Email { get; set; } = null!;
     
     [DataType(DataType.Password)]
-    [Column(TypeName="nvarchar(max)")]
     public string Password { get; set; } = null!;
 }
