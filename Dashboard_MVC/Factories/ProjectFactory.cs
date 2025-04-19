@@ -11,13 +11,14 @@ public static class ProjectFactory
         return new ProjectEntity()
         {
             Id = $"P - {IdGenerator.GenerateId(5)}",
-            ProjectName = vm.ProjectName,
-            ClientName = vm.ClientName,
-            Description = vm.Description,
+            ProjectName = vm.CreateProject.ProjectName,
+            ClientName = vm.CreateProject.ClientName,
+            Description = vm.CreateProject.Description,
             DateCreated = DateTime.Now,
-            DateDue = vm.DateDue,
-            Price = vm.Price ?? 0,
+            DateDue = vm.CreateProject.DateDue,
+            Price = vm.CreateProject.Price,
             
         };
     }
+    
 }

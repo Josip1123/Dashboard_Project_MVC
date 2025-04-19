@@ -1,9 +1,14 @@
 @model Dashboard_MVC.Views.Models.DashboardViewModel
 @using Business.Helpers
 
-@foreach(var project in Model.Projects.Reverse())
+@foreach(var project in Model.CreateProject.Projects.Reverse())
 {
     <div class="dashboard-card">
+        @{
+            ViewData["ProjectId"] = project.Id;
+        }
+        @await Html.PartialAsync("Partials/_projectMenu")
+        
         <div class="card-header">
             <div class="project-img-container">
                 <img
@@ -16,10 +21,16 @@
                 <h4>@project.ProjectName</h4>
                 <h5>@project.ClientName</h5>
             </div>
+            
+            <div class="project-menu-btn">
+                <p>...</p>
+            </div>
+            
         </div>
         <p class="project-description">
             @project.Description
         </p>
+        <p class="project-price">$@project.Price</p>
         <div class="card-footer">
             <div class="time-remaining"><img alt="time-icon" src="~/img/clock-two-svgrepo-com.svg"/> @Countdown.GetTimeCountdown(project.DateCreated, project.DateDue)</div>
             <div class="members">

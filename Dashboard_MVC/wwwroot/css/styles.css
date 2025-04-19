@@ -58,7 +58,7 @@ select {
   --outline-secondary: 1px solid white;
   --filter-link-color: #80bdff;
   --dashboard-bg: #eef0f3;
-  --delete-red: rgba(245, 11, 11, 0.781);
+  --delete-red: rgba(226, 74, 74, 0.69);
   --input-select-color: gray;
   --black-transparent: #2c2d30ab;
   --btn-grey-transparent: #e7e9ec77;
@@ -474,6 +474,7 @@ body:has(.dashboard) {
     }
 
     .dashboard-card {
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -484,11 +485,24 @@ body:has(.dashboard) {
       width: 16rem;
       height: 14rem;
       margin: 0 auto;
+      
+      .project-menu-btn{
+        width: 2rem;
+        height: 2rem;
+        background-color: var(--btn-grey);
+        border-radius: var(--btn-border-radius);
+        margin-left: auto;
+        cursor: pointer;
+        border: none;
+        text-align: center;
+        color: white;
+      }
 
       .card-header {
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        width: 100%;
 
         h4 {
           font-size: var(--h6-fontsize);
@@ -613,13 +627,20 @@ body:has(.dashboard) {
 .edit-menu {
   display: flex;
   flex-direction: column;
-  max-width: 12rem;
+  min-width: 6rem;
   gap: 0.5rem;
   background-color: white;
   padding: 0.5rem;
   border: var(--input-border);
   border-radius: var(--form-border-radius);
-
+  position: absolute;
+  top: 3.2rem;
+  right: 2.5rem;
+  
+  &.hidden{
+    display: none;
+  }
+  
   .profile-name {
     display: flex;
     align-items: center;
@@ -633,7 +654,21 @@ body:has(.dashboard) {
       font-weight: var(--medium);
     }
   }
+  .delete{
+    background-color: var(--delete-red);
+    
+    &:hover{
+      background-color: darkred;
+      color: white;
+    }
+  }
 
+  .delete-btn{
+    all: unset;
+    height: 100%;
+    width: 100%;
+  }
+  
   .edit,
   .delete,
   .logout {
@@ -646,15 +681,13 @@ body:has(.dashboard) {
     font-weight: var(--normal);
     cursor: pointer;
 
-    &:hover {
+  }
+    .edit:hover, 
+    .logout:hover {
       background-color: var(--btn-grey);
     }
-  }
 }
 
-.delete {
-  color: var(--delete-red);
-}
 
 .notifications {
   display: flex;
@@ -954,6 +987,7 @@ body.darkmode {
     background-color: var(--black-transparent);
     color: white;
   }
+  
 
   .notifications {
     background-color: var(--black-transparent);
@@ -968,10 +1002,7 @@ body.darkmode {
   .edit:hover {
     color: black;
   }
-
-  .delete:hover {
-    color: red;
-  }
+  
 
   .logout:hover,
   .edit:hover,

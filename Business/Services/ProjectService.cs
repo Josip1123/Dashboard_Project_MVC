@@ -81,21 +81,12 @@ public class ProjectService(ProjectRepository repository)
         
     }
 
-    /*public async Task UpdateAsync(string placeholder, string id)
+    public async Task UpdateAsync(ProjectEntity projectEntity)
     {
        
         try
         {
-                var entityToUpdate = await GetByIdAsync(id);
-                if (entityToUpdate == null)
-                {
-                    throw new Exception("Project not found");
-                }
-                entityToUpdate.Name = placeholder.Name;
-                entityToUpdate.DateDue = placeholder.DateDue;
-                entityToUpdate.IsCompleted = project.IsCompleted;#1#
-                await repository.UpdateAsync(entityToUpdate);
-               
+                await repository.UpdateAsync(projectEntity);
         }
         catch (Exception e)
         {
@@ -104,5 +95,5 @@ public class ProjectService(ProjectRepository repository)
             throw;
         }
         
-    }*/
+    }
 }

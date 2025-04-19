@@ -1,0 +1,87 @@
+@model Dashboard_MVC.Views.Models.DashboardViewModel
+
+<div class="center form-wrapper @(ViewBag.ShowEditForm == true ? "" : "hidden")" id="editProjectForm">
+    <form class="add-form form"  asp-controller="Dashboard" asp-action="PostEdit" method="post" >
+        <div class="form-header add-form-header">
+            <h3 >Add Project</h3>
+            <div
+                class="close-btn btn"
+                id="editProjectFormClose"
+                role="button"
+                tabindex="0"
+                aria-label="Close"
+            >
+                <img src="~/img/X.svg" alt="" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="add-img">
+                <img src="~/img/X.svg" alt="" />
+            </div>
+        </div>
+        <input type="hidden" asp-for="EditProject.Id" id="editProjectId" />
+        <div class="form-group">
+            <label asp-for="EditProject.ProjectName">Project Name:</label>
+            <input
+                asp-for="EditProject.ProjectName"
+                type="text"
+                id="editProjectName"
+                placeholder="Add project name"
+            />
+            <span class="error" asp-validation-for="EditProject.ProjectName"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EditProject.ClientName">Client Name:</label>
+            <input
+                asp-for="EditProject.ClientName"
+                type="text"
+                id="editClientName"
+                placeholder="Add client name"
+
+            />
+            <span class="error" asp-validation-for="EditProject.ClientName"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EditProject.Description">Description:</label>
+            <textarea
+                asp-for="EditProject.Description"
+                id="editDescription"
+                rows="4"
+                maxlength="150"
+                placeholder="Add a short description (max 120 characters)"
+            ></textarea>
+            <span class="error" asp-validation-for="EditProject.Description"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EditProject.DateDue">Date Due:</label>
+            <input
+                asp-for="EditProject.DateDue"
+                type="date"
+                id="editDateDue"
+            />
+        </div>
+
+
+
+
+        <div class="form-group">
+            <label asp-for="EditProject.Price">Budget:</label>
+            <input
+                asp-for="EditProject.Price"
+                type="number"
+                id="editBudget"
+                placeholder="t.ex 1000"
+            />
+            <span class="error" asp-validation-for="EditProject.Price"></span>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">
+                Update
+            </button>
+        </div>
+    </form>
+</div>
+

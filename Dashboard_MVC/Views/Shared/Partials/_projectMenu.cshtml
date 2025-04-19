@@ -1,0 +1,17 @@
+
+<div class="edit-menu hidden">
+    <div class="edit">
+        @using (Html.BeginForm("GetEdit", "Dashboard", new { id = ViewData["ProjectId"] }, FormMethod.Get))
+        {
+            <button class="edit-btn" type="submit">Edit</button>
+        }
+    </div>
+    <hr />
+    <div class="delete">
+        @using (Html.BeginForm("Delete", "Dashboard", new { id = ViewData["ProjectId"] }, FormMethod.Post))
+        {
+            <button class="delete-btn" type="submit">Delete</button>
+        }
+    </div>
+</div>
+

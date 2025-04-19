@@ -24,6 +24,6 @@ public class ProjectEntity
     
     //list of type Member
     
-    public decimal Price { get; set; }
+    public decimal? Price { get; set; }
     
 }
