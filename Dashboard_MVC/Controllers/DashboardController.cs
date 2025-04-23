@@ -57,8 +57,6 @@ public class DashboardController(ProjectService service) : Controller
         try
         {
             var entityToUpdate = await service.GetByIdAsync(id);
-            if (entityToUpdate == null) return NotFound();
-            
             
             var dashboardViewModel = new DashboardViewModel
             {

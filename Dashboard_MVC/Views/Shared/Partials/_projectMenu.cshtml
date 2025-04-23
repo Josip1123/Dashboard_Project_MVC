@@ -3,7 +3,7 @@
     <div class="edit">
         @using (Html.BeginForm("GetEdit", "Dashboard", new { id = ViewData["ProjectId"] }, FormMethod.Get))
         {
-            <button class="edit-btn" type="submit">Edit</button>
+            <button class="edit-btn" id="editProjectBtn" type="submit">Edit</button>
         }
     </div>
     <hr />

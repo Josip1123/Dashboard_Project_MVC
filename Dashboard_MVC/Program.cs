@@ -13,6 +13,23 @@ builder.Services.AddScoped<ProjectRepository>();
 builder.Services.AddScoped<ProjectService>();
 
 
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+   
+    options.CheckConsentNeeded = context => true;
+
+
+    options.MinimumSameSitePolicy = SameSiteMode.Lax;
+
+
+
+
+});
+
+
+builder.Services.AddHttpContextAccessor();
+
+
 
 
 var app = builder.Build();
@@ -25,6 +42,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 //app.UseHttpsRedirection();
 app.UseRouting();
+
+app.UseCookiePolicy();
 
 app.MapStaticAssets();
 

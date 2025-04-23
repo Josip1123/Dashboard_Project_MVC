@@ -3,7 +3,7 @@
 
 @foreach(var project in Model.CreateProject.Projects.Reverse())
 {
-    <div class="dashboard-card">
+    <div class="dashboard-card" data-status="@project.IsCompleted">
         @{
             ViewData["ProjectId"] = project.Id;
         }
