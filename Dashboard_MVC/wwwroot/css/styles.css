@@ -184,6 +184,7 @@ select {
   font-size: var(--smaller-font-size);
 }
 
+
 /* Main */
 .form {
   display: flex;
@@ -544,6 +545,10 @@ body:has(.dashboard) {
           img{
             height: 1.2rem;
             width: 1.2rem;
+          }
+          &.success{
+            background-color: lightgreen;
+            color: black;
           }
         }
 
@@ -929,6 +934,7 @@ body:has(.dashboard) {
   bottom: .5rem;
   left: .5rem;
   cursor: pointer;
+  opacity: 60%;
 }
 
 /*Darkmode*/
