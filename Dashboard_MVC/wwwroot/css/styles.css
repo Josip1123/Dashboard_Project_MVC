@@ -63,6 +63,7 @@ select {
   --black-transparent: #2c2d30ab;
   --btn-grey-transparent: #e7e9ec77;
   --white-transparent: rgba(255, 255, 255, 0.65);
+  --cookie-banner-bg: rgba(245, 245, 245, 0.79);
 
   /* Typography */
   --big: 4.5rem;
@@ -899,6 +900,35 @@ body:has(.dashboard) {
   justify-content: center;
   gap: 0.3rem;
   padding: 0.5rem;
+}
+
+.cookie-box{
+  background-color: var(--cookie-banner-bg);
+  min-width: 100vw;
+  padding: .5rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.accept-cookie, .decline-cookie{
+  margin: .5rem;
+}
+
+.decline-cookie{
+  background-color: var(--delete-red);
+}
+
+.cookie-review{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  position: fixed;
+  bottom: .5rem;
+  left: .5rem;
+  cursor: pointer;
 }
 
 /*Darkmode*/
