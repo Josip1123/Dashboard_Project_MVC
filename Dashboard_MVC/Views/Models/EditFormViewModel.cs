@@ -22,6 +22,7 @@ public class EditFormViewModel
     [DataType(DataType.Date)] 
     public DateTime DateDue { get; set; }
     
+    [DataType(DataType.Date)] 
     public DateTime DateCreated { get; set; }
     
     public bool IsCompleted { get; set; }

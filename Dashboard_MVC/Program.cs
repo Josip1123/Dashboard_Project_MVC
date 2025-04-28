@@ -10,27 +10,18 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ProjectRepository>();
+builder.Services.AddScoped<MemberRepository>();
 builder.Services.AddScoped<ProjectService>();
+builder.Services.AddScoped<MemberService>();
 
 
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
-   
     options.CheckConsentNeeded = context => true;
-
-
     options.MinimumSameSitePolicy = SameSiteMode.Lax;
-
-
-
-
 });
 
-
 builder.Services.AddHttpContextAccessor();
-
-
-
 
 var app = builder.Build();
 

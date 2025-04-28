@@ -16,10 +16,7 @@ public class MemberEntity
     [Column(TypeName="nvarchar(100)")]
     public string Email { get; set; } = null!;
     
-    [DataType(DataType.Password)]
-    public string Password { get; set; } = null!;
-    
     public string? Phone { get; set; }
 
-    public string Title { get; set; } = null!;
+    public string? Title { get; set; } = null!;
 }

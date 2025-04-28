@@ -16,14 +16,14 @@
             </a>
         </div>
         
-        @await Html.PartialAsync("Partials/_NavbarUser")
+        @await Html.PartialAsync("Partials/_NavbarDashboard")
 
         <div class="searchbar">
             <input
                 type="search"
                 name="search"
                 id="search"
-                placeholder="Type project name to search..."
+                placeholder="Type here to search..."
             />
         </div>
         <div class="user-menu">
@@ -84,7 +84,7 @@
             </ul>
         </div>
         <main class="dashboard-content">
-                @await Html.PartialAsync("Partials/_projectCard", Model)
+                @await Html.PartialAsync("Partials/_ProjectCard", Model)
         </main>
         
     </div>

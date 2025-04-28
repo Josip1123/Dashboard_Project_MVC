@@ -1,0 +1,67 @@
+@model Dashboard_MVC.Views.Models.DashboardViewModel
+
+<div class="center form-wrapper @(ViewBag.ShowEditMemberForm == true ? "" : "hidden")" id="EditMemberForm">
+    <form class="add-form form" asp-controller="Dashboard" asp-action="PostEditMember" method="post">
+        <div class="form-header add-form-header">
+            <input type="hidden" asp-for="EditMember.Id" />
+            <h3>Edit Member</h3>
+            <div
+                class="close-btn btn"
+                id="EditMemberClose"
+                role="button"
+                tabindex="0"
+                aria-label="Close">
+                <img src="~/img/X.svg" alt=""/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="add-img member">
+                <img src="~/img/X.svg" alt="" />
+            </div>
+        </div>
+
+        <div class="name-wrapper">
+            <div class="form-group">
+                <label asp-for="EditMember.FirstName">First Name:</label>
+                <input
+                    type="text"
+                    id="firstName"
+                    placeholder="First name"
+                    asp-for="EditMember.FirstName"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label asp-for="EditMember.LastName">Last Name:</label>
+                <input
+                    asp-for="EditMember.LastName"
+                    type="text"
+                    id="lastName"
+                    placeholder="last name"
+                    required
+                />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EditMember.Email">Email:</label>
+            <input asp-for="EditMember.Email" type="email" id="email" placeholder="members email adress" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EditMember.Phone">Phone:</label>
+            <input asp-for="EditMember.Phone" type="tel" id="phone"  placeholder="+46 52 567 567" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EditMember.Title">Job Title:</label>
+            <input asp-for="EditMember.Title" type="text" id="jobTitle" placeholder="tex CEO, Developer etc" required />
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Save Changes</button>
+        </div>
+    </form>
+</div>
+

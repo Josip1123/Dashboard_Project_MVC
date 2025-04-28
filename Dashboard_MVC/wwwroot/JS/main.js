@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if(addProjectButton){
         projectFormCloseBtn.addEventListener("click", ()=>{
-                window.location.href = '/Dashboard/Dashboard';
+                window.location.href = '/Dashboard/Projects';
         })
     }
 
@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
         if(editBtn) {
-            
             editBtn.addEventListener("click", ()=>{
                 editForm.classList.remove("hidden")
             })
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (editClose){
             editClose.addEventListener("click", ()=>{
-                window.location.href = '/Dashboard/Dashboard';
+                window.location.href = '/Dashboard/Projects';
             });
         }
 
@@ -127,6 +126,64 @@ document.addEventListener('DOMContentLoaded', function() {
             banner.classList.remove("hidden");
             cookieReviewBtn.classList.add("hidden");
         })
+    }
+    
+    
+    /*
+    Add Members 
+    */
+    const addMemberButton = document.querySelector("#addMemberBtn")
+    const addMemberForm = document.querySelector("#addMemberForm")
+    const memberFormCloseBtn = document.querySelector(".member-form-close-btn")
+    const editMemberBtn = document.querySelector("#editMemberBtn")
+    const editMemberClose = document.querySelector("#EditMemberClose")
+    const editMemberForm = document.querySelector("#EditMemberForm")
+    const memberEditMenus = document.querySelectorAll(".member-edit-menu")
+    
+    if(addMemberButton) {
+        addMemberButton.addEventListener("click", ()=>{
+            addMemberForm.classList.remove("hidden");
+            console.log("hey ?")
+        })
+    }
+
+    if(memberFormCloseBtn){
+        memberFormCloseBtn.addEventListener("click", ()=>{
+            window.location.href = '/Dashboard/Members';
+        })
+    }
+
+    /*if(editMemberBtn) {
+        editMemberBtn.addEventListener("click", ()=>{
+            editMemberForm.classList.remove("hidden")
+        })
+    }*/
+
+    if (editMemberClose){
+        editMemberClose.addEventListener("click", ()=>{
+            window.location.href = '/Dashboard/Members';
+        });
+    }
+
+    if(memberEditMenus) {
+        memberEditMenus.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+
+                const card = btn.closest(".member-card-container");
+                const menu = card.querySelector(".edit-menu");
+                const isCurrentlyHidden = menu.classList.contains("hidden");
+
+                editMenus.forEach(menu => {
+                    menu.classList.add("hidden");
+                });
+
+                if (isCurrentlyHidden) {
+                    menu.classList.remove("hidden");
+                }
+            });
+        });
+
     }
 });
 

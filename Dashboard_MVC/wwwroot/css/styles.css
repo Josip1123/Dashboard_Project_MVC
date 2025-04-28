@@ -780,11 +780,13 @@ body:has(.dashboard) {
 }
 
 .member-card-container {
+  position: relative;
   border-radius: var(--form-border-radius);
   padding: 1rem;
   background-color: white;
   box-shadow: var(--box-shadow);
-  max-width: 16rem;
+  width: 16rem;
+  height: fit-content;
   margin: 0 auto;
 
   .member-card {

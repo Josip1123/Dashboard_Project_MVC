@@ -1,15 +1,35 @@
-<div class="member-card">
-    <div class="member-card-header">
-        <div>...</div>
+@model Dashboard_MVC.Views.Models.DashboardViewModel
+
+@foreach (var member in Model.CreateMember.Members.Reverse())
+{
+    <div class="member-card-container">
+        @{
+            ViewData["MemberId"] = member.Id;
+        }
+        @await Html.PartialAsync("Partials/_MemberMenu")
+        <div class="member-card">
+            <div class="member-card-header">
+                <div class="member-edit-menu">...</div>
+            </div>
+            <div class="member-img">
+                <img src="~/img/user-placeholder.svg" alt=""/>
+            </div>
+            <div class="member-card-content">
+                <h4>@member.FirstName @member.LastName</h4>
+                <h5>@member.Title</h5>
+                <p class="email">@member.Email</p>
+                @if (string.IsNullOrEmpty(member.Phone))
+                {
+                    <p>No phone number provided</p>
+                }
+                else
+                {
+                    <p>@member.Phone</p>
+                }
+                <button class="btn message-btn">Message</button>
+            </div>
+        </div>
     </div>
-    <div class="member-img">
-        <img src="~/img/user-placeholder.svg" alt="" />
-    </div>
-    <div class="member-card-content">
-        <h4>Name of teh Member</h4>
-        <h5>Job tittle</h5>
-        <p class="email">email@mail.com</p>
-        <p>+46 (0) 72-111-1111</p>
-        <button class="btn message-btn">Message</button>
-    </div>
-</div>
+}
+
+
