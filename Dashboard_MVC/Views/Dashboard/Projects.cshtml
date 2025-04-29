@@ -27,12 +27,8 @@
             />
         </div>
         <div class="user-menu">
-            <i class="notification-icon"
-            ><img src="~/img/Notification.svg" alt=""
-             /></i>
-            <i class="darkmode-icon"
-            ><img src="~/img/Setting.svg" alt=""
-             /></i>
+            @await Html.PartialAsync("Partials/_NotificationIcon")
+            @await Html.PartialAsync("Partials/_DarkModeIcon")
             <div
                 class="profile-img-container"
                 role="button"

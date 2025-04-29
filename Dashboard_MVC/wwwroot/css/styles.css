@@ -45,6 +45,7 @@ select {
   --form-border-radius: 0.5rem;
   --btn-border-radius: 0.5rem;
   --input-border: 1px solid gray;
+  --dm-border: 1px solid white;
   --dashboard-border: 1px solid rgb(199, 196, 196);
   --box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.2);
 
@@ -939,6 +940,14 @@ body:has(.dashboard) {
   opacity: 60%;
 }
 
+.icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 /*Darkmode*/
 
 body.darkmode {
@@ -971,15 +980,31 @@ body.darkmode {
     }
 
   }
-
+  
+  .dashboard{
+    border: var(--dm-border);
+  }
+  
   .wrapper,
   .dashboard {
     background-color: black;
+    
 
 
-    .dashboard-card {
+    .dashboard-card, .member-card-container{
       background: var(--black-transparent);
+      border: var(--dm-border);
+      color: white;
     }
+
+    .member-card{
+      color: white;
+      background: transparent;
+      .message-btn, h5 {
+        color: black;
+      }
+    }
+
 
     p,
     h1,
@@ -1077,6 +1102,7 @@ body.darkmode {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: transparent!important;
 
     .welcome-to-product {
       display: flex;

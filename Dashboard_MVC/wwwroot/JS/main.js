@@ -111,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (declineBtn) {
         declineBtn.addEventListener("click", () => {
             document.cookie = ".AspNet.Consent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            deleteDarkModeCookie();
             if (banner) {
                 banner.classList.add("hidden");
             }
@@ -135,9 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const addMemberButton = document.querySelector("#addMemberBtn")
     const addMemberForm = document.querySelector("#addMemberForm")
     const memberFormCloseBtn = document.querySelector(".member-form-close-btn")
-    const editMemberBtn = document.querySelector("#editMemberBtn")
     const editMemberClose = document.querySelector("#EditMemberClose")
-    const editMemberForm = document.querySelector("#EditMemberForm")
     const memberEditMenus = document.querySelectorAll(".member-edit-menu")
     
     if(addMemberButton) {
@@ -152,12 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = '/Dashboard/Members';
         })
     }
-
-    /*if(editMemberBtn) {
-        editMemberBtn.addEventListener("click", ()=>{
-            editMemberForm.classList.remove("hidden")
-        })
-    }*/
+    
 
     if (editMemberClose){
         editMemberClose.addEventListener("click", ()=>{
@@ -185,6 +179,61 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     }
+    
+    const darkModeBtn = document.querySelector(".darkmode-container");
+    const darkModeIcon = document.querySelector(".darkmode-img");
+    const logo = document.querySelector(".logo");
+    const notificationIcon = document.querySelector(".notification-icon")
+    
+    console.log("Dark Mode Button Element:", darkModeBtn);
+    console.log("Dark Mode Icon Element:", darkModeIcon);
+    if (darkModeBtn){
+        darkModeBtn.addEventListener("click", ()=>{
+            document.body.classList.toggle('darkmode');
+            updateDarkmodeIcon();
+        })
+    }
+    
+    function updateDarkmodeIcon() {
+        
+        if (document.body.classList.contains("darkmode")){
+            darkModeIcon.src = "/img/sun-svgrepo-com.svg";
+            logo.src = "/img/full-darkmode.svg";
+            notificationIcon.src = "/img/Notification-dark.svg"
+            setDarkModeCookie(true);
+            
+        } else {
+            darkModeIcon.src = "/img/moon-svgrepo-com.svg";
+            logo.src = "/img/full.svg";
+            notificationIcon.src = "/img/Notification.svg";
+            setDarkModeCookie(false);
+        } 
+    }
+    
+    
+    /*cookie handler med hjälp av chatGPT*/
+    
+    function setDarkModeCookie(enable) {
+        const maxAge = 60 * 60 * 24 * 365;
+        const cookie = [
+            'darkmode=' + (enable ? 'true' : 'false'),
+            'path=/',
+            'max-age=' + maxAge,
+            'SameSite=Lax'
+        ].join('; ');
+        document.cookie = cookie;
+    }
+
+    function deleteDarkModeCookie() {
+        document.cookie = [
+            'darkmode=',
+            'path=/',
+            'max-age=0',
+            'SameSite=Lax'
+        ].join('; ');
+    }
+    
+    updateDarkmodeIcon();
 });
 
 
