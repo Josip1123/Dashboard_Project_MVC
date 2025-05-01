@@ -22,8 +22,8 @@ public class ProjectEntity
 
     public bool IsCompleted { get; set; }
     
-    //list of type Member
-    
     public decimal? Price { get; set; }
     
+    public ICollection<MemberEntity> Members { get; set; } = new List<MemberEntity>();
+
 }

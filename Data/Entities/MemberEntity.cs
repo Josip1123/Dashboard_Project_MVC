@@ -21,4 +21,6 @@ public class MemberEntity
     public string? Title { get; set; } = null!;
     
     public string? ImageUrl { get; set; }
+
+    public ICollection<ProjectEntity> Projects { get; set; } = new List<ProjectEntity>();
 }

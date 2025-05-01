@@ -264,4 +264,17 @@ public class DashboardController(ProjectService projectService, MemberService me
         await memberService.UpdateAsync(entity);
         return RedirectToAction("Members");
     }
+
+    [HttpPost]
+    public async Task<IActionResult> ChangeStatusCompleted(string id)
+    {
+        var entity = await projectService.GetByIdAsync(id);
+        
+        entity.IsCompleted = !entity.IsCompleted;
+
+        await projectService.UpdateAsync(entity);
+        
+        return RedirectToAction("Projects");
+    }
+    
 }

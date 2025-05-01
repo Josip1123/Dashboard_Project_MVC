@@ -17,7 +17,6 @@ public static class ProjectFactory
             DateCreated = DateTime.Now,
             DateDue = vm.CreateProject.DateDue,
             Price = vm.CreateProject.Price,
-            
         };
     }
     

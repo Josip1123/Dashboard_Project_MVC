@@ -679,7 +679,8 @@ body:has(.dashboard) {
   
   .edit,
   .delete,
-  .logout {
+  .logout,
+  .complete{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -697,7 +698,7 @@ body:has(.dashboard) {
       display: block;
     }
     
-    .delete-btn, .edit-btn{
+    .delete-btn, .edit-btn, .changeStatus-btn{
       width: 100% !important;
       height: 100% !important;
       display: block !important;
@@ -708,7 +709,9 @@ body:has(.dashboard) {
     }
   }
     .edit:hover, 
-    .logout:hover {
+    .logout:hover,
+    .changeStatus-btn
+    {
       background-color: var(--btn-grey);
     }
 }
@@ -973,6 +976,9 @@ body:has(.dashboard) {
 body.darkmode {
   background-color: black;
 
+  .time-remaining{
+    color: black;
+  }
   .form {
     background-color: black;
 
@@ -1104,7 +1110,8 @@ body.darkmode {
 
   .logout:hover,
   .edit:hover,
-  .delete:hover {
+  .delete:hover,
+  .complete:hover{
     background-color: var(--btn-grey-transparent);
   }
 }

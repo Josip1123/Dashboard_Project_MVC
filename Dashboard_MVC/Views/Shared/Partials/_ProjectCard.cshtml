@@ -6,6 +6,7 @@
     <div class="dashboard-card" data-status="@project.IsCompleted">
         @{
             ViewData["ProjectId"] = project.Id;
+            ViewData["IsCompleted"] = project.IsCompleted;
         }
         @await Html.PartialAsync("Partials/_projectMenu")
         
@@ -36,7 +37,10 @@
         </p>
         <p class="project-price">$@project.Price</p>
         <div class="card-footer">
-            <div class="time-remaining @(project.IsCompleted ? "success" : "")"><img alt="time-icon" src="~/img/clock-two-svgrepo-com.svg"/> @(project.IsCompleted ? "Completed" : Countdown.GetTimeCountdown(project.DateCreated, project.DateDue))</div>
+            <div class="time-remaining @(project.IsCompleted ? "success" : "")">
+                <img alt="time-icon" src="@(project.IsCompleted ? Url.Content("~/img/checkmark-circle-svgrepo-com.svg") : Url.Content("~/img/clock-two-svgrepo-com.svg"))"/>
+                @(project.IsCompleted ? "Completed" : Countdown.GetTimeCountdown(project.DateCreated, project.DateDue))
+            </div>
             <div class="members">
                 <div class="members-img-container">
                     <img
