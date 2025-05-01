@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using Business.Helpers;
 using Business.Services;
 using Dashboard_MVC.Views.Models;
 using Data.Entities;
@@ -117,7 +116,8 @@ public class DashboardController(ProjectService projectService, MemberService me
             CreateMember = new CreateMemberViewModel
             {
                 Members = entities
-            }
+            },
+            EditMember = new EditMemberViewModel()
         };
 
         return View(viewModel);
@@ -129,9 +129,36 @@ public class DashboardController(ProjectService projectService, MemberService me
         
         try
         {
-            var entity = Factories.MemberFactory.Create(vm);
-            await memberService.CreateMemberAsync(entity);
-            return RedirectToAction("Members");
+            if (vm.CreateMember.ImageFile != null && vm.CreateMember.ImageFile.Length > 0)
+            {
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "members");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                var fileName = Guid.NewGuid() + Path.GetExtension(vm.CreateMember.ImageFile.FileName);
+                var filePath = Path.Combine(uploadsFolder, fileName);
+                
+                await using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await vm.CreateMember.ImageFile.CopyToAsync(fileStream);
+                }
+                
+                var entity = Factories.MemberFactory.Create(vm);
+                entity.ImageUrl = "/uploads/members/" + fileName;
+            
+                await memberService.CreateMemberAsync(entity);
+                return RedirectToAction("Members");
+            }
+            else
+            {
+                var entity = Factories.MemberFactory.Create(vm);
+                await memberService.CreateMemberAsync(entity);
+                return RedirectToAction("Members"); 
+            }
+            
+            
         }
         catch (Exception ex)
         {
@@ -146,7 +173,21 @@ public class DashboardController(ProjectService projectService, MemberService me
     [HttpPost]
     public async Task<IActionResult> DeleteMember(string id)
     {
+        var member = await memberService.GetByIdAsync(id);
+        
+        if (!string.IsNullOrEmpty(member.ImageUrl) && !member.ImageUrl.Contains("user-placeholder"))
+        {
+            string fileName = Path.GetFileName(member.ImageUrl);
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "members", fileName);
+            
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
+        }
+        
         await memberService.DeleteAsync(id);
+        
         return RedirectToAction("Members");
     }
     
@@ -171,7 +212,8 @@ public class DashboardController(ProjectService projectService, MemberService me
                     LastName = entityToUpdate.LastName,
                     Email  = entityToUpdate.Email,
                     Phone = entityToUpdate.Phone,
-                    Title = entityToUpdate.Title
+                    Title = entityToUpdate.Title,
+                    ImgUrl = entityToUpdate.ImageUrl
                 }
             };
             
@@ -196,9 +238,29 @@ public class DashboardController(ProjectService projectService, MemberService me
             LastName = vm.EditMember.LastName,
             Email = vm.EditMember.Email,
             Phone = vm.EditMember.Phone,
-            Title = vm.EditMember.Title
+            Title = vm.EditMember.Title,
+            ImageUrl = vm.EditMember.ImgUrl
            
         };
+        
+        if (vm.EditMember.ImageFile != null && vm.EditMember.ImageFile.Length > 0)
+        {
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "members");
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            var fileName = Guid.NewGuid() + Path.GetExtension(vm.EditMember.ImageFile.FileName);
+            var filePath = Path.Combine(uploadsFolder, fileName);
+            
+            await using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await vm.EditMember.ImageFile.CopyToAsync(fileStream);
+            }
+            entity.ImageUrl = "/uploads/members/" + fileName;
+        }
+        
         await memberService.UpdateAsync(entity);
         return RedirectToAction("Members");
     }

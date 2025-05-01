@@ -23,5 +23,8 @@ public class EditMemberViewModel
     public string? Phone { get; set; }
     
     [StringLength(50, ErrorMessage = "Job title must be 50 characters or less.")]
-    public string? Title { get; set; } = null!;
+    public string? Title { get; set; }
+    
+    public IFormFile? ImageFile { get; set; }
+    public string? ImgUrl { get; set; }
 }

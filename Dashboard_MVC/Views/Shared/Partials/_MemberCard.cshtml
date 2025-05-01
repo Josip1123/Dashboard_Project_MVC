@@ -9,10 +9,12 @@
         @await Html.PartialAsync("Partials/_MemberMenu")
         <div class="member-card">
             <div class="member-card-header">
-                <div class="member-edit-menu">...</div>
+                <div class="member-edit-menu"><i>
+                    <img alt="menu dots" src="~/img/dots-horizontal-svgrepo-com.svg"/>
+                </i></div>
             </div>
             <div class="member-img">
-                <img src="~/img/user-placeholder.svg" alt=""/>
+                <img src=@(string.IsNullOrEmpty(member.ImageUrl) ?  Url.Content("~/img/user-placeholder.svg") : member.ImageUrl) alt=""/>
             </div>
             <div class="member-card-content">
                 <h4>@member.FirstName @member.LastName</h4>

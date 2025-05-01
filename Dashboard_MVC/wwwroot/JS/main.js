@@ -142,7 +142,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if(addMemberButton) {
         addMemberButton.addEventListener("click", ()=>{
             addMemberForm.classList.remove("hidden");
-            console.log("hey ?")
         })
     }
 
@@ -185,8 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const logo = document.querySelector(".logo");
     const notificationIcon = document.querySelector(".notification-icon")
     
-    console.log("Dark Mode Button Element:", darkModeBtn);
-    console.log("Dark Mode Icon Element:", darkModeIcon);
     if (darkModeBtn){
         darkModeBtn.addEventListener("click", ()=>{
             document.body.classList.toggle('darkmode');
@@ -215,13 +212,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function setDarkModeCookie(enable) {
         const maxAge = 60 * 60 * 24 * 365;
-        const cookie = [
+        document.cookie = [
             'darkmode=' + (enable ? 'true' : 'false'),
             'path=/',
             'max-age=' + maxAge,
             'SameSite=Lax'
         ].join('; ');
-        document.cookie = cookie;
     }
 
     function deleteDarkModeCookie() {
@@ -231,6 +227,36 @@ document.addEventListener('DOMContentLoaded', function() {
             'max-age=0',
             'SameSite=Lax'
         ].join('; ');
+    }
+    
+    /*Image preview*/
+    const memberImgField = document.querySelector('#ImageFile');
+    const memberImgEditField = document.querySelector('#ImageEditFile');
+    
+    if (memberImgField) {
+        memberImgField.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('imgPreview').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    if (memberImgEditField) {
+        memberImgEditField.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('imgEditPreview').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
     }
     
     updateDarkmodeIcon();

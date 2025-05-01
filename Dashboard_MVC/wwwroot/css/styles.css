@@ -459,9 +459,9 @@ body:has(.dashboard) {
   .dashboard-content {
     grid-area: dashboard;
     display: grid;
-    grid-auto-rows: 14rem;
+    grid-auto-rows: minmax(14px, max-content);
     overflow-y: scroll;
-    gap: 2.5rem;
+    gap: 1.5rem;
     padding: 1rem;
 
     @media (min-width: 768px) {
@@ -486,8 +486,7 @@ body:has(.dashboard) {
       background-color: white;
       box-shadow: var(--box-shadow);
       width: 16rem;
-      height: 14rem;
-      margin: 0 auto;
+      height: 16rem;
       
       .project-menu-btn{
         width: 2rem;
@@ -499,6 +498,7 @@ body:has(.dashboard) {
         border: none;
         text-align: center;
         color: white;
+        padding: .5rem;
       }
 
       .card-header {
@@ -596,7 +596,7 @@ body:has(.dashboard) {
     justify-content: space-between;
   }
 
-  .add-img {
+  .img-preview-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -607,13 +607,20 @@ body:has(.dashboard) {
     border: 2px dashed gray;
 
     img {
-      width: 2rem;
+      width: 100%;
+      text-align: center;
     }
-
+    
     &.member {
       border-radius: 50%;
     }
   }
+
+  #ImageFile, #ImageEditFile{
+    line-height: 1rem;
+    padding: 7px;
+  }
+
 
   .select {
     display: flex;
@@ -666,7 +673,7 @@ body:has(.dashboard) {
     
     &:hover{
       background-color: darkred;
-      color: white;
+      color: white!important;
     }
   }
   
@@ -802,6 +809,19 @@ body:has(.dashboard) {
       display: flex;
       justify-content: flex-end;
       padding: 0.1rem;
+      
+      .member-edit-menu{
+        height: 2rem;
+        width: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--btn-grey);
+        border-radius: var(--btn-border-radius);
+        cursor: pointer;
+        border: none;
+        padding: .5rem;
+      }
     }
 
     .member-img {

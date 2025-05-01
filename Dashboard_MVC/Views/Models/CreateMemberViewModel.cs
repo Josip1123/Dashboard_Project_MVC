@@ -23,6 +23,8 @@ public class CreateMemberViewModel
     
     [StringLength(50, ErrorMessage = "Job title must be 50 characters or less.")]
     public string? Title { get; set; } = null!;
-    
+
+
+    public IFormFile? ImageFile { get; set; }
     public IEnumerable<Data.Entities.MemberEntity> Members { get; set; } = new List<Data.Entities.MemberEntity>();
 }

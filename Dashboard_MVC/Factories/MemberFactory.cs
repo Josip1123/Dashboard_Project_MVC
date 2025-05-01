@@ -16,6 +16,7 @@ public static class MemberFactory
             Email = vm.CreateMember.Email,
             Phone = vm.CreateMember.Phone,
             Title = vm.CreateMember.Title,
+            ImageUrl = null
         };
     }
 }
