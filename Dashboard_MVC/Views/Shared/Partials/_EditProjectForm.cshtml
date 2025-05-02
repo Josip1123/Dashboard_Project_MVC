@@ -71,8 +71,6 @@
         </div>
         <div class="form-group">
             <label>Assign Members:</label>
-            @if (Model.EditProject.Members != null && Model.EditProject.Members.Any())
-            {
                 @foreach (var member in Model.EditProject.Members)
                 {
                     var isChecked = Model.EditProject.AssignedMembers != null && Model.EditProject.AssignedMembers.Contains(member.Id);
@@ -81,11 +79,6 @@
                         <label for="member-@member.Id">@member.FirstName @member.LastName</label>
                     </div>
                 }
-            }
-            else
-            {
-                <p>No members available</p>
-            }
         </div>
         <div class="form-group">
             <button class="btn btn-primary" type="submit">

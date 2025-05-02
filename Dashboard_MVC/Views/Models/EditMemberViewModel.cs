@@ -22,9 +22,10 @@ public class EditMemberViewModel
     [RegularExpression(@"^\d+$", ErrorMessage = "Phone number can only contain digits.")]
     public string? Phone { get; set; }
     
+    [Required(ErrorMessage = "Job title is required.")]
     [StringLength(50, ErrorMessage = "Job title must be 50 characters or less.")]
     public string? Title { get; set; }
-    
-    public IFormFile? ImageFile { get; set; }
-    public string? ImgUrl { get; set; }
+
+    public IFormFile ImageFile { get; set; } = null!;
+    public string? ImgUrl { get; set; } = null!;
 }

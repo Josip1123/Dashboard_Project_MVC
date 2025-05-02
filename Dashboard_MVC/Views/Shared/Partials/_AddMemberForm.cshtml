@@ -1,6 +1,6 @@
 @model Dashboard_MVC.Views.Models.DashboardViewModel
 
-<div class="center form-wrapper @(ViewBag.ShowProjectForm == true ? "" : "hidden")" id="addMemberForm" >
+<div class="center form-wrapper @(ViewBag.ShowMemberForm == true ? "" : "hidden")" id="addMemberForm" >
     <form class="add-form form" asp-controller="Dashboard" asp-action="CreateMember" method="post" enctype="multipart/form-data">
         <div class="form-header add-form-header">
             <h3>Add Member</h3>
@@ -29,8 +29,9 @@
                     id="firstName"
                     placeholder="First name"
                     asp-for="CreateMember.FirstName"
-                    required
+                  
                 />
+                <span class="error" asp-validation-for="CreateMember.FirstName"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CreateMember.LastName">Last Name:</label>
@@ -39,24 +40,27 @@
                     type="text"
                     id="lastName"
                     placeholder="last name"
-                    required
                 />
+                <span class="error" asp-validation-for="CreateMember.LastName"></span>
             </div>
         </div>
 
         <div class="form-group">
             <label asp-for="CreateMember.Email">Email:</label>
             <input asp-for="CreateMember.Email" type="email" id="email" placeholder="members email adress" />
+            <span class="error" asp-validation-for="CreateMember.Email"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="CreateMember.Phone">Phone:</label>
             <input asp-for="CreateMember.Phone" type="tel" id="phone"  placeholder="+46 52 567 567" />
+            <span class="error" asp-validation-for="CreateMember.Phone"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="CreateMember.Title">Job Title:</label>
-            <input asp-for="CreateMember.Title" type="text" id="jobTitle" placeholder="tex CEO, Developer etc" required />
+            <input asp-for="CreateMember.Title" type="text" id="jobTitle" placeholder="tex CEO, Developer etc"/>
+            <span class="error" asp-validation-for="CreateMember.Title"></span>
         </div>
 
         <div class="form-group">

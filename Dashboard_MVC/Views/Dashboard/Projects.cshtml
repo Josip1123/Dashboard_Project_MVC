@@ -6,7 +6,10 @@
 }
 
 @await Html.PartialAsync("Partials/_AddProjectForm")
-@await Html.PartialAsync("Partials/_EditProjectForm", Model)
+@if (ViewBag.ShowEditForm == true && Model.EditProject != null)
+{
+    @await Html.PartialAsync("Partials/_EditProjectForm", Model)
+}
 
 <div class="wrapper">
     <div class="dashboard">

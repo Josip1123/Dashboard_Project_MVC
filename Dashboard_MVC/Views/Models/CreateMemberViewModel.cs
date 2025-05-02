@@ -21,8 +21,9 @@ public class CreateMemberViewModel
     [RegularExpression(@"^\d+$", ErrorMessage = "Phone number can only contain digits.")]
     public string? Phone { get; set; }
     
-    [StringLength(50, ErrorMessage = "Job title must be 50 characters or less.")]
-    public string? Title { get; set; } = null!;
+    [Required(ErrorMessage = "Job title is required.")]
+    [StringLength(50, ErrorMessage = "Job title must be 50 characters or less.")] 
+    public string? Title { get; set; }
 
 
     public IFormFile? ImageFile { get; set; }
