@@ -158,6 +158,8 @@ select {
   align-items: center;
   justify-content: center;
   height: 100%;
+  background-color: var(--btn-grey);
+  padding: 1rem;
 }
 
 .or-line {
@@ -459,7 +461,6 @@ body:has(.dashboard) {
   .dashboard-content {
     grid-area: dashboard;
     display: grid;
-    grid-auto-rows: minmax(14px, max-content);
     overflow-y: scroll;
     gap: 1.5rem;
     padding: 1rem;
@@ -486,7 +487,7 @@ body:has(.dashboard) {
       background-color: white;
       box-shadow: var(--box-shadow);
       width: 16rem;
-      height: 16rem;
+      min-height: 16rem;
       
       .project-menu-btn{
         width: 2rem;
@@ -532,8 +533,8 @@ body:has(.dashboard) {
         display: flex;
         align-items: center;
         justify-content: space-between;
-     
 
+       
         .time-remaining {
           background-color: var(--btn-grey);
           padding: 0.7rem;
@@ -557,22 +558,39 @@ body:has(.dashboard) {
           display: flex;
           flex-wrap: wrap;
           gap: 0.5rem;
+          max-width: 7rem;
 
           .members-img-container {
             position: relative;
             width: 2rem;
             height: 2rem;
+            border-radius: 50%;
+            background-color: transparent;
+            
+            .user-profile{
+              height: 100%;
+              width: 100%;
+              border-radius: 50%;
+            }
             
             .name-hover{
               position: absolute;
-              display: none;
-              top: 0;
+              opacity: 0;
+              visibility: hidden;
+              top: 2.5rem;
               left: 0;
+              background-color: antiquewhite;
+              color: black;
+              border-radius: var(--btn-border-radius);
+              padding: .5rem;
+              z-index: 1000;
+              overflow: visible;
             }
 
             &:hover{
               .name-hover{
-                display: block;
+                opacity: 1;
+                visibility: visible;
               }
             }
           }
@@ -666,6 +684,7 @@ body:has(.dashboard) {
   position: absolute;
   top: 3.2rem;
   right: 2.5rem;
+  z-index: 99999999;
   
   &.hidden{
     display: none;
@@ -814,9 +833,10 @@ body:has(.dashboard) {
   padding: 1rem;
   background-color: white;
   box-shadow: var(--box-shadow);
-  width: 16rem;
-  height: fit-content;
-  margin: 0 auto;
+  min-height: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .member-card {
     display: flex;
@@ -824,6 +844,8 @@ body:has(.dashboard) {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+    width: 100%;
+    height: 100%;
 
     .member-card-header {
       width: 100%;
@@ -842,15 +864,25 @@ body:has(.dashboard) {
         cursor: pointer;
         border: none;
         padding: .5rem;
+        z-index: 999999;
       }
     }
 
     .member-img {
       display: flex;
-      height: 5rem;
+      height: 8rem;
+      width: 6rem; 
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-bottom: 0.5rem;
+      aspect-ratio: auto;
+      
 
       img {
         height: inherit;
+        object-fit: contain;
       }
     }
 
@@ -1092,7 +1124,7 @@ body.darkmode {
   }
 
   .profile-menu {
-    background-color: var(--black-transparent);
+    background-color: black;
     color: white;
 
     .profile-name {
@@ -1102,7 +1134,7 @@ body.darkmode {
   }
 
   .edit-menu {
-    background-color: var(--black-transparent);
+    background-color: black;
     color: white;
     form {
       height: 100%;
@@ -1112,7 +1144,7 @@ body.darkmode {
   
 
   .notifications {
-    background-color: var(--black-transparent);
+    background-color: black;
     color: white;
 
     .notification-card {
@@ -1121,15 +1153,16 @@ body.darkmode {
   }
 
   .logout:hover,
-  .edit:hover {
+  .edit:hover,
+  .complete:hover{
     color: black;
   }
   
 
   .logout:hover,
   .edit:hover,
-  .complete:hover{
-    background-color: var(--btn-grey-transparent);
+  .changeStatus-btn:hover{
+    background-color: var(--btn-grey-transparent)!important;
   }
 }
 
