@@ -6,7 +6,7 @@ public interface IProjectRepository
 {
     Task AddAsync(ProjectEntity entity);
     Task<List<ProjectEntity>> GetAllAsync(); 
-    Task<ProjectEntity> GetAsync(Expression<Func<ProjectEntity, bool>> expression);
+    Task<ProjectEntity?> GetAsync(Expression<Func<ProjectEntity, bool>> expression);
     Task DeleteAsync(ProjectEntity entity);
     Task UpdateAsync(ProjectEntity entity);
 }

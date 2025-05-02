@@ -14,12 +14,6 @@
             </button>
         }
     </div>
-    <div class="edit">
-        @using (Html.BeginForm("AssignMembers", "Dashboard", new { id = ViewData["ProjectId"] }, FormMethod.Get))
-        {
-            <button class="edit-btn" type="submit">Assign</button>
-        }
-    </div>
     <hr />
     <div class="delete">
         @using (Html.BeginForm("Delete", "Dashboard", new { id = ViewData["ProjectId"] }, FormMethod.Post))

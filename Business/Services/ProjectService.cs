@@ -1,10 +1,13 @@
 using System.Diagnostics;
+using Business.Interfaces;
 using Data.Entities;
 using Data.Repositories;
 
 namespace Business.Services;
 
-public class ProjectService(ProjectRepository repository)
+
+
+public class ProjectService(ProjectRepository repository) : IProjectService
 {
     public async Task CreateProjectAsync(ProjectEntity project)
     {

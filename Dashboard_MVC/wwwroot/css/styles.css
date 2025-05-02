@@ -555,10 +555,26 @@ body:has(.dashboard) {
 
         .members {
           display: flex;
+          flex-wrap: wrap;
           gap: 0.5rem;
 
           .members-img-container {
+            position: relative;
             width: 2rem;
+            height: 2rem;
+            
+            .name-hover{
+              position: absolute;
+              display: none;
+              top: 0;
+              left: 0;
+            }
+
+            &:hover{
+              .name-hover{
+                display: block;
+              }
+            }
           }
         }
       }
@@ -672,7 +688,7 @@ body:has(.dashboard) {
     background-color: var(--delete-red);
     
     &:hover{
-      background-color: darkred;
+      background-color: #ef7474;
       color: white!important;
     }
   }
@@ -706,11 +722,13 @@ body:has(.dashboard) {
       border: none;
       background: transparent;
       cursor: pointer;
+      overflow: hidden;
+      border-radius: var(--btn-border-radius);
     }
   }
     .edit:hover, 
     .logout:hover,
-    .changeStatus-btn
+    .changeStatus-btn:hover
     {
       background-color: var(--btn-grey);
     }
@@ -1110,7 +1128,6 @@ body.darkmode {
 
   .logout:hover,
   .edit:hover,
-  .delete:hover,
   .complete:hover{
     background-color: var(--btn-grey-transparent);
   }

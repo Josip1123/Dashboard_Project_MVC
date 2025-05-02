@@ -14,11 +14,6 @@
                 <img src="~/img/X.svg" alt="" />
             </div>
         </div>
-        <div class="form-group">
-            <div class="add-img">
-                <img src="~/img/X.svg" alt="" />
-            </div>
-        </div>
         <input type="hidden" asp-for="EditProject.Id" id="editProjectId" />
         <div class="form-group">
             <label asp-for="EditProject.ProjectName">Project Name:</label>
@@ -63,10 +58,7 @@
                 id="editDateDue"
             />
         </div>
-
-
-
-
+        
         <div class="form-group">
             <label asp-for="EditProject.Price">Budget:</label>
             <input
@@ -76,6 +68,24 @@
                 placeholder="t.ex 1000"
             />
             <span class="error" asp-validation-for="EditProject.Price"></span>
+        </div>
+        <div class="form-group">
+            <label>Assign Members:</label>
+            @if (Model.EditProject.Members != null && Model.EditProject.Members.Any())
+            {
+                @foreach (var member in Model.EditProject.Members)
+                {
+                    var isChecked = Model.EditProject.AssignedMembers != null && Model.EditProject.AssignedMembers.Contains(member.Id);
+                    <div class="member-checkbox">
+                        <input type="checkbox" name="EditProject.AssignedMembers" value="@member.Id" @(isChecked ? "checked" : "")/>
+                        <label for="member-@member.Id">@member.FirstName @member.LastName</label>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No members available</p>
+            }
         </div>
         <div class="form-group">
             <button class="btn btn-primary" type="submit">

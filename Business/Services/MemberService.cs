@@ -1,10 +1,11 @@
 using System.Diagnostics;
+using Business.Interfaces;
 using Data.Entities;
 using Data.Repositories;
 
 namespace Business.Services;
 
-public class MemberService(MemberRepository repository)
+public class MemberService(MemberRepository repository) : IMemberService
 {
     
         public async Task CreateMemberAsync(MemberEntity project)
@@ -87,7 +88,7 @@ public class MemberService(MemberRepository repository)
            
             try
             {
-                    await repository.UpdateAsync(memberEntity);
+                await repository.UpdateAsync(memberEntity);
             }
             catch (Exception e)
             {
@@ -96,5 +97,18 @@ public class MemberService(MemberRepository repository)
                 throw;
             }
             
+        }
+
+        public async Task<List<MemberEntity>> GetMembersById(List<string> ids)
+        {
+            try
+            {
+                return await repository.GetMembersByIdsAsync(ids);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 }

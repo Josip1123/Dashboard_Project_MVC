@@ -6,7 +6,7 @@ namespace Data.Repositories;
 
 public abstract class BaseRepository<T>(DataContext context) where T: class
 {
-    private readonly DbSet<T> _dbSet = context.Set<T>();
+    protected readonly DbSet<T> _dbSet = context.Set<T>();
 
 
     public virtual async Task AddAsync(T entity)
@@ -20,12 +20,9 @@ public abstract class BaseRepository<T>(DataContext context) where T: class
         return await _dbSet.ToListAsync();
     }
     
-    public virtual async Task<T> GetAsync(Expression<Func<T, bool>> expression)
+    public virtual async Task<T?> GetAsync(Expression<Func<T, bool>> expression)
     {
-        var entity = await _dbSet.FirstOrDefaultAsync(expression);
-        if (entity == null)
-            throw new KeyNotFoundException("Entity not found.");
-        return entity;
+        return await _dbSet.FirstOrDefaultAsync(expression);
     }
 
     public virtual async Task DeleteAsync(T entity)

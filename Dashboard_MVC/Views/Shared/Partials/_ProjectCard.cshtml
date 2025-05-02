@@ -42,21 +42,22 @@
                 @(project.IsCompleted ? "Completed" : Countdown.GetTimeCountdown(project.DateCreated, project.DateDue))
             </div>
             <div class="members">
-                <div class="members-img-container">
-                    <img
-                        src="~/img/user-placeholder.svg"
-                        alt=""
-                        class="user-profile"
-                    />
-                </div>
-
-                <div class="members-img-container">
-                    <img
-                        src="~/img/user-placeholder.svg"
-                        alt=""
-                        class="user-profile"
-                    />
-                </div>
+                
+                
+                    
+                    @foreach (var member in project.Members)
+                    {
+                        <div class="members-img-container">
+                            <img
+                                src=@(string.IsNullOrEmpty(member.ImageUrl) ?  Url.Content("~/img/user-placeholder.svg") : member.ImageUrl)
+                                alt=""
+                                class="user-profile"
+                             />
+                        
+                            @*<div class="name-hover">@member.FirstName</div>*@
+                        </div>
+                    }
+                
             </div>
         </div>
     </div>

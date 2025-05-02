@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Data.Entities;
 
 namespace Dashboard_MVC.Views.Models;
 
@@ -29,4 +30,8 @@ public class EditFormViewModel
     
     [Required(ErrorMessage = "Price is required.")]
     public decimal? Price { get; set; }
+
+    public List<MemberEntity>? Members { get; set; } = new();
+
+    public List<string>? AssignedMembers { get; set; } = new();
 }

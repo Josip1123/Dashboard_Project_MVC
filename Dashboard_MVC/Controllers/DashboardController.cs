@@ -17,7 +17,8 @@ public class DashboardController(ProjectService projectService, MemberService me
             CreateProject = new CreateProjectViewModel
             {
                 Projects = entities
-            }
+            },
+            EditProject = new EditFormViewModel()
         };
 
         return View(viewModel);
@@ -56,6 +57,7 @@ public class DashboardController(ProjectService projectService, MemberService me
         try
         {
             var entityToUpdate = await projectService.GetByIdAsync(id);
+            var allMembers = await memberService.GetAllAsync();
             
             var dashboardViewModel = new DashboardViewModel
             {
@@ -73,8 +75,9 @@ public class DashboardController(ProjectService projectService, MemberService me
                     DateDue = entityToUpdate.DateDue,
                     Price = entityToUpdate.Price,
                     DateCreated = entityToUpdate.DateCreated,
-                    IsCompleted = entityToUpdate.IsCompleted
-                
+                    IsCompleted = entityToUpdate.IsCompleted,
+                    Members = allMembers.ToList(),
+                    AssignedMembers = entityToUpdate.Members.Select(m => m.Id).ToList()
                 }
             };
             
@@ -84,7 +87,7 @@ public class DashboardController(ProjectService projectService, MemberService me
         catch (Exception e)
         {
             Console.WriteLine(e);
-            throw;
+            return RedirectToAction("Projects");
         }
         
     }
@@ -92,17 +95,28 @@ public class DashboardController(ProjectService projectService, MemberService me
     [HttpPost]
     public async Task<IActionResult> PostEdit(DashboardViewModel vm)
     {
-            var entity = new ProjectEntity()
+        
+            var entity = await projectService.GetByIdAsync(vm.EditProject.Id);
+            
+               
+                entity.ProjectName = vm.EditProject.ProjectName;
+                entity.ClientName = vm.EditProject.ClientName;
+                entity.Description = vm.EditProject.Description;
+                entity.DateDue = vm.EditProject.DateDue;
+                entity.IsCompleted = vm.EditProject.IsCompleted;
+                entity.Price = vm.EditProject.Price;
+                entity.Members.Clear();
+            
+            
+            if (vm.EditProject.AssignedMembers != null && vm.EditProject.AssignedMembers.Any())
             {
-                Id = vm.EditProject.Id,
-                ProjectName = vm.EditProject.ProjectName,
-                ClientName = vm.EditProject.ClientName,
-                Description = vm.EditProject.Description,
-                DateDue = vm.EditProject.DateDue,
-                DateCreated = vm.EditProject.DateCreated,
-                IsCompleted = vm.EditProject.IsCompleted,
-                Price = vm.EditProject.Price
-            };
+                var selectedMemberEntities = await memberService.GetMembersById(vm.EditProject.AssignedMembers);
+                foreach (var member in selectedMemberEntities)
+                {
+                    entity.Members.Add(member);
+                }
+            }
+            
             await projectService.UpdateAsync(entity);
             return RedirectToAction("Projects");
     }
