@@ -1,82 +1,82 @@
 @model Dashboard_MVC.Views.Models.DashboardViewModel
 
 <div class="center form-wrapper @(ViewBag.ShowProjectForm == true ? "" : "hidden")" id="projectForm">
-            <form class="add-form form"  asp-controller="Dashboard" asp-action="Create" method="post" >
-                <div class="form-header add-form-header">
-                    <h3 >Add Project</h3>
-                    <div
-                        class="close-btn btn"
-                        id="projectFormClose"
-                        role="button"
-                        tabindex="0"
-                        aria-label="Close"
-                    >
-                        <img src="~/img/X.svg" alt="" />
-                    </div>
-                </div>
+    <form class="add-form form" id="addProject" asp-controller="Dashboard" asp-action="Create" method="post" >
+        <div class="form-header add-form-header">
+            <h3 >Add Project</h3>
+            <div
+                class="close-btn btn"
+                id="projectFormClose"
+                role="button"
+                tabindex="0"
+                aria-label="Close"
+            >
+                <img src="~/img/X.svg" alt="" />
+            </div>
+        </div>
                 
 
-                <div class="form-group">
-                    <label asp-for="CreateProject.ProjectName">Project Name:</label>
-                    <input
-                        asp-for="CreateProject.ProjectName"
-                        type="text"
-                        id="projectName"
-                        placeholder="Add project name"
-                    />
-                    <span class="error" asp-validation-for="CreateProject.ProjectName"></span>
-                </div>
+        <div class="form-group">
+            <label asp-for="CreateProject.ProjectName">Project Name:</label>
+            <input
+                asp-for="CreateProject.ProjectName"
+                type="text"
+                id="projectName"
+                placeholder="Add project name"
+            />
+            <span class="error" asp-validation-for="CreateProject.ProjectName"></span>
+        </div>
 
-                <div class="form-group">
-                    <label asp-for="CreateProject.ClientName">Client Name:</label>
-                    <input
-                        asp-for="CreateProject.ClientName"
-                        type="text"
-                        id="clientName"
-                        placeholder="Add client name"
+        <div class="form-group">
+            <label asp-for="CreateProject.ClientName">Client Name:</label>
+            <input
+                asp-for="CreateProject.ClientName"
+                type="text"
+                id="clientName"
+                placeholder="Add client name"
                        
-                    />
-                    <span class="error" asp-validation-for="CreateProject.ClientName"></span>
-                </div>
+            />
+            <span class="error" asp-validation-for="CreateProject.ClientName"></span>
+        </div>
 
-                <div class="form-group">
-                    <label asp-for="CreateProject.Description">Description:</label>
-                    <textarea
+        <div class="form-group">
+            <label asp-for="CreateProject.Description">Description:</label>
+            <textarea
                         asp-for="CreateProject.Description"
                         id="description"
                         rows="4"
                         maxlength="150"
                         placeholder="Add a short description (max 120 characters)"
                     ></textarea>
-                    <span class="error" asp-validation-for="CreateProject.Description"></span>
-                </div>
+            <span class="error" asp-validation-for="CreateProject.Description"></span>
+        </div>
                 
-                    <div class="form-group">
-                        <label asp-for="CreateProject.DateDue">Date Due:</label>
-                        <input
-                            asp-for="CreateProject.DateDue"
-                            type="date"
-                            id="dateDue"
-                        />
-                    </div>
+        <div class="form-group">
+            <label asp-for="CreateProject.DateDue">Date Due:</label>
+            <input
+                asp-for="CreateProject.DateDue"
+                type="date"
+                id="dateDue"
+            />
+        </div>
 
                     
                
 
-                <div class="form-group">
-                    <label asp-for="CreateProject.Price">Budget:</label>
-                    <input
-                        asp-for="CreateProject.Price"
-                        type="number"
-                        id="budget"
-                        placeholder="t.ex 1000"
-                    />
-                    <span class="error" asp-validation-for="CreateProject.Price"></span>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit">
-                        Create
-                    </button>
-                </div>
-            </form>
+        <div class="form-group">
+            <label asp-for="CreateProject.Price">Budget:</label>
+            <input
+                asp-for="CreateProject.Price"
+                type="number"
+                id="budget"
+                placeholder="t.ex 1000"
+            />
+            <span class="error" asp-validation-for="CreateProject.Price"></span>
         </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">
+                Create
+            </button>
+        </div>
+    </form>
+</div>

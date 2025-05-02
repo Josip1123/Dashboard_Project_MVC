@@ -1,7 +1,7 @@
 @model Dashboard_MVC.Views.Models.DashboardViewModel
 
 <div class="center form-wrapper @(ViewBag.ShowEditForm == true ? "" : "hidden")" id="editProjectForm">
-    <form class="add-form form"  asp-controller="Dashboard" asp-action="PostEdit" method="post" >
+    <form class="add-form form" id="editProject" asp-controller="Dashboard" asp-action="PostEdit" method="post" >
         <div class="form-header add-form-header">
             <h3 >Edit</h3>
             <div
@@ -87,4 +87,3 @@
         </div>
     </form>
 </div>
-

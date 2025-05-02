@@ -1,7 +1,7 @@
 @model Dashboard_MVC.Views.Models.DashboardViewModel
 
 <div class="center form-wrapper @(ViewBag.ShowEditMemberForm == true ? "" : "hidden")" id="EditMemberForm">
-    <form class="add-form form" asp-controller="Dashboard" asp-action="PostEditMember" method="post" enctype="multipart/form-data">
+    <form class="add-form form" id="editMember" asp-controller="Dashboard" asp-action="PostEditMember" method="post" enctype="multipart/form-data">
         <div class="form-header add-form-header">
             <input type="hidden" asp-for="EditMember.Id" />
             <input type="hidden" asp-for="EditMember.ImgUrl" />
@@ -20,7 +20,7 @@
             <div class="img-preview-container">
                 <img id="imgEditPreview" src="@(string.IsNullOrEmpty(Model.EditMember.ImgUrl) ? Url.Content("~/img/user-placeholder.svg") : Model.EditMember.ImgUrl)" alt="Preview"/>
             </div>
-            <input type="file" id="ImageEditFile" asp-for="EditMember.ImageFile" accept="image/*" />
+            <input type="file" class="ImageEditFile" asp-for="EditMember.ImageFile" accept="image/*" />
         </div>
 
         <div class="name-wrapper">
@@ -67,4 +67,3 @@
         </div>
     </form>
 </div>
-

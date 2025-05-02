@@ -571,6 +571,7 @@ body:has(.dashboard) {
               height: 100%;
               width: 100%;
               border-radius: 50%;
+              object-fit: contain;
             }
             
             .name-hover{
@@ -651,7 +652,7 @@ body:has(.dashboard) {
     }
   }
 
-  #ImageFile, #ImageEditFile{
+  #ImageFile, .ImageEditFile{
     line-height: 1rem;
     padding: 7px;
   }

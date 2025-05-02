@@ -6,15 +6,13 @@
 }
 
 @await Html.PartialAsync("Partials/_AddProjectForm")
-@if (ViewBag.ShowEditForm == true && Model.EditProject != null)
-{
-    @await Html.PartialAsync("Partials/_EditProjectForm", Model)
-}
+@await Html.PartialAsync("Partials/_EditProjectForm", Model)
+
 
 <div class="wrapper">
     <div class="dashboard">
         <div class="logo-container">
-            <a href="#">
+            <a asp-controller="Dashboard" asp-action="Projects">
                 <img src="~/img/Full.svg" alt="" class="logo" />
             </a>
         </div>
