@@ -461,6 +461,7 @@ body:has(.dashboard) {
   .dashboard-content {
     grid-area: dashboard;
     display: grid;
+    grid-template-rows: max-content;
     overflow-y: scroll;
     gap: 1.5rem;
     padding: 1rem;
