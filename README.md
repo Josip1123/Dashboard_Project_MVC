@@ -8,5 +8,5 @@ Microsoft Identity används för bl.a. rollerna och auktorisering; inloggning 
 Cookie‑consent och mörkt/ljust tema är implementerade. 
 De flesta formulär valideras dubbelt. Projekt kan filtreras (påbörjade, avslutade, alla) 
 och man kan lägga till bilder på medlemmar (inte på projekt, men jag tyckte det var lika bra och lite roligare) 
-Det går att lägga till medlemar på ett projekt. 
+Det går att lägga till medlemar på ett projekt (edit under project card menu). 
 Det enda som fattas nu är ett notifieringssystem, men det blev så på grund av tidsbrist (påsk, sjukdomar och arbete 🥲)…
