@@ -1,10 +1,16 @@
-<div class="profile-menu">
-    <div class="profile-name">
-        <img src="~/img/user-placeholder.svg" alt="" />
-        <p>User Name</p>
-    </div>
-    <div class="logout">
-        <div>Logout</div>
-    </div>
+<div class="profile-menu hidden">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <form asp-controller="Login" asp-action="MemberLogout" method="post" class="logout" id="logOut">
+            <button type="submit" class="logout">Logout</button>
+        </form> 
+    }
+    else
+    {
+        <form asp-controller="Login" asp-action="Logout" method="post" class="logout" id="logOut">
+            <button type="submit" class="logout">Logout</button>
+        </form> 
+    }
+    
 </div>
 

@@ -1,3 +1,7 @@
+/* idee för detta kom från ChatGPT anpassat för min behov, 
+jag ville ha "universal" form validator, tänkte denna såg rolig ut.
+ Uses patterns för olika forms och fetches rätt element och span att displaya error*/
+
 const memberPatterns = {
     "CreateMember.Email": {
         regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -60,6 +64,35 @@ const editProjectPatterns = {
     }
 };
 
+const loginPatterns = {
+    "Email": {
+        regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        empty: "E‑mail is required",
+        invalid: "Invalid e‑mail address"
+    },
+    "Password": {
+        empty: "Password is required",
+    }
+};
+
+const regPatterns = {
+    "FirstName": {
+        empty: "First name is required",
+    },
+    "LastName": {
+        empty: "Last name is required",
+    },
+    "Email": {
+        regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        empty: "E‑mail is required",
+        invalid: "Invalid e‑mail address"
+    },
+    "Password": {
+        regex: /(?=.*\d)(?=.*[^\w\s]).{8,}/,
+        empty: "Password is required",
+        invalid: "Invalid password format"
+    }
+};
 
 
 
@@ -103,4 +136,8 @@ validateForm("#addMember", memberPatterns);
 validateForm("#addProject", projectPatterns);
 validateForm("#editProject", editProjectPatterns);
 validateForm("#editMember", editMemberPatterns);
+validateForm(".form-admin", loginPatterns);
+validateForm("#userLoginForm", loginPatterns);
+validateForm("#regForm", regPatterns);
+
 

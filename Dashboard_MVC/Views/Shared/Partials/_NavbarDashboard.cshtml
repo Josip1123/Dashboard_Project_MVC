@@ -3,7 +3,11 @@
     <nav class="main-navigation">
         <ul>
             <li><a href="/Dashboard/Projects">Projects</a></li>
-            <li><a href="/Dashboard/Members">Members</a></li>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <li><a href="/Dashboard/Members">Members</a></li>
+            }
+            
         </ul>
     </nav>
 </div>

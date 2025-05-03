@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const logo = document.querySelector(".logo");
     const notificationIcon = document.querySelector(".notification-icon")
     
-    if (darkModeBtn){
+    if (darkModeBtn && darkModeIcon){
         darkModeBtn.addEventListener("click", ()=>{
             document.body.classList.toggle('darkmode');
             updateDarkmodeIcon();
@@ -256,6 +256,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
                 reader.readAsDataURL(file);
             }
+        });
+    }
+
+
+    const profileMenuIcon = document.querySelector('.profile-img-container');
+    const profileMenu = document.querySelector('.profile-menu');
+
+    if (profileMenuIcon) {
+        profileMenuIcon.addEventListener('click', () => {
+            profileMenu.classList.toggle('hidden');
+            console.log('Profile image container clicked.');
         });
     }
     

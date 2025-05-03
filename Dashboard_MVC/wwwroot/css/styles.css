@@ -106,11 +106,14 @@ select {
 }
 
 .form-wrapper {
-  width: 100%;
-  height: 100vh;
   position: fixed;
   top: 0;
-  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 100%;
+  height: 100vh;
   padding: 0.5rem;
   overflow: auto;
   background-color: var(--black-transparent);
@@ -182,13 +185,50 @@ select {
   display: none !important;
 }
 
-.error{
+.error, .login-error{
   color: lightcoral;
   font-size: var(--smaller-font-size);
 }
 
+.login-error{
+  font-size: var(--standard-font-size);
+  text-align: center;
+  padding-bottom: .5rem;
+}
+
+.denied{
+  padding: 5rem;
+  margin-bottom: 5rem;
+  font-size: var(--h1-size);
+  text-align: center;
+}
+
+.denied-img{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-image: url("./img/pexels-pixabay-39080.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
 
 /* Main */
+.form.google-login{
+  padding: 0;
+}
+.google-login{
+    padding: 0;
+      button{
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+      }
+  }
+
+
 .form {
   display: flex;
   flex-direction: column;
@@ -267,6 +307,7 @@ select {
     .login-with-x {
       background-color: var(--btn-grey);
       width: 100%;
+      height: 100%;
       position: relative;
       font-size: var(--smaller-font-size);
       font-weight: var(--semi-bold);
@@ -278,7 +319,7 @@ select {
         top: 50%;
         transform: translateY(-50%);
         display: inline-block;
-        background: url('../img/x-logo-black.svg') no-repeat center center;
+        background: url('./img/web_light_rd_na.svg') no-repeat center center;
         background-size: contain;
         width: 1.2rem;
         height: 1.2rem;
@@ -468,8 +509,9 @@ body:has(.dashboard) {
     padding: 1rem;
 
     @media (min-width: 768px) {
-      grid-template-columns: 1fr;
-      justify-items: center;
+      grid-template-columns: max-content;
+      justify-content: center;
+    
     }
 
     @media (min-width: 992px) {
@@ -676,6 +718,15 @@ body:has(.dashboard) {
 }
 
 /* Menus */
+.profile-img-container{
+  position: relative;
+ 
+  .profile-menu{
+    position: absolute;
+    top: 2.5rem;
+    left: -4rem;
+  }
+}
 .profile-menu,
 .edit-menu {
   display: flex;
@@ -716,7 +767,12 @@ body:has(.dashboard) {
       color: white!important;
     }
   }
-  
+  .logout{
+    padding: .3rem;
+    border: none;
+    width: 100%;
+    background-color: transparent;
+  }
   .edit,
   .delete,
   .logout,

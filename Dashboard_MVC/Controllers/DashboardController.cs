@@ -2,10 +2,12 @@ using System.Diagnostics;
 using Business.Services;
 using Dashboard_MVC.Views.Models;
 using Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dashboard_MVC.Controllers;
 
+[Authorize]
 public class DashboardController(ProjectService projectService, MemberService memberService) : Controller
 {
     public async Task<IActionResult> Projects()
@@ -121,6 +123,7 @@ public class DashboardController(ProjectService projectService, MemberService me
             return RedirectToAction("Projects");
     }
     
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Members()
     {
         
@@ -137,6 +140,7 @@ public class DashboardController(ProjectService projectService, MemberService me
         return View(viewModel);
     }
     
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> CreateMember(DashboardViewModel vm)
     {
@@ -184,6 +188,7 @@ public class DashboardController(ProjectService projectService, MemberService me
         }
     }
     
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> DeleteMember(string id)
     {
@@ -205,6 +210,7 @@ public class DashboardController(ProjectService projectService, MemberService me
         return RedirectToAction("Members");
     }
     
+    [Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> GetEditMember(string id)
     {
@@ -242,6 +248,7 @@ public class DashboardController(ProjectService projectService, MemberService me
         
     }
     
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> PostEditMember(DashboardViewModel vm)
     {
@@ -279,6 +286,7 @@ public class DashboardController(ProjectService projectService, MemberService me
         return RedirectToAction("Members");
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> ChangeStatusCompleted(string id)
     {

@@ -23,10 +23,11 @@ public class UserAuthService(UserManager<ApplicationUser> userManager)
         };
 
         var res = await userManager.CreateAsync(applicationUser, form.Password);
-        await userManager.AddClaimAsync(applicationUser, new Claim("FirstName", form.FirstName));
 
         if (res.Succeeded)
         {
+            await userManager.AddClaimAsync(applicationUser, new Claim("FirstName", form.FirstName));
+            await userManager.AddToRoleAsync(applicationUser, "Standard");
             return true;
         }
 
