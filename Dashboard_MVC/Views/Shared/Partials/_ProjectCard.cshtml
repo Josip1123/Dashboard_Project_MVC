@@ -1,12 +1,14 @@
 @model Dashboard_MVC.Views.Models.DashboardViewModel
 @using Business.Helpers
 
-@foreach(var project in Model.CreateProject.Projects.Reverse())
+@foreach(var project in Model.CreateProject.Projects.OrderBy(p => p.DateCreated).Reverse())
 {
     <div class="dashboard-card" data-status="@project.IsCompleted">
         @{
             ViewData["ProjectId"] = project.Id;
             ViewData["IsCompleted"] = project.IsCompleted;
+
+            var daysLeft = (project.DateDue - DateTime.Now.Date).Days;
         }
         @await Html.PartialAsync("Partials/_projectMenu")
         
@@ -37,7 +39,7 @@
         </p>
         <p class="project-price">$@project.Price</p>
         <div class="card-footer">
-            <div class="time-remaining @(project.IsCompleted ? "success" : "")">
+            <div class="time-remaining @(project.IsCompleted ? "success" : (daysLeft <= 5 ? "danger" : ""))">
                 <img alt="time-icon" src="@(project.IsCompleted ? Url.Content("~/img/checkmark-circle-svgrepo-com.svg") : Url.Content("~/img/clock-two-svgrepo-com.svg"))"/>
                 @(project.IsCompleted ? "Completed" : Countdown.GetTimeCountdown(project.DateCreated, project.DateDue))
             </div>

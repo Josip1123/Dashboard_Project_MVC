@@ -207,11 +207,14 @@ select {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background-image: url("./img/pexels-pixabay-39080.jpg");
+  background-image: url("../img/pexels-pixabay-39080.jpg");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
   min-width: 100vw;
+  @media (max-width: 768px) {
+    background-position: 80% center;
+  }
 }
 
 
@@ -359,10 +362,18 @@ body:has(.dashboard) {
   grid-template-columns: 15rem repeat(3, 1fr);
   grid-template-rows: repeat(2, 5rem) 2rem 1fr;
   grid-template-areas:
-    "logo searchbar searchbar user-menu"
+    "logo searchbar user-menu user-menu"
     "nav add-project add-project add-project"
     "nav filter filter filter"
     "nav dashboard dashboard dashboard";
+  
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
 
   .logo-container {
     grid-area: logo;
@@ -402,6 +413,10 @@ body:has(.dashboard) {
         font-size: var(--standard-font-size);
         font-weight: var(--semi-bold);
         position: relative;
+        
+        @media (max-width: 786px) {
+          background-color: var(--btn-grey);
+        }
 
         &:hover {
           background-color: var(--btn-grey);
@@ -422,6 +437,7 @@ body:has(.dashboard) {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 
     input {
       all: unset;
@@ -451,6 +467,12 @@ body:has(.dashboard) {
     justify-content: space-between;
     align-items: center;
     padding-inline: 1rem;
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
   }
 
   .section-filter {
@@ -589,6 +611,7 @@ body:has(.dashboard) {
           justify-content: space-between;
           align-items: center;
           gap: .2rem;
+          max-width: 10rem;
           img{
             height: 1.2rem;
             width: 1.2rem;
@@ -597,13 +620,17 @@ body:has(.dashboard) {
             background-color: lightgreen;
             color: black;
           }
+          &.danger{
+            background-color: lightcoral;
+            color: white;
+          }
         }
 
         .members {
           display: flex;
           flex-wrap: wrap;
           gap: 0.5rem;
-          max-width: 7rem;
+          max-width: 5.4rem;
 
           .members-img-container {
             position: relative;
@@ -615,6 +642,7 @@ body:has(.dashboard) {
             .user-profile{
               height: 100%;
               width: 100%;
+              max-width: 1.8rem;
               border-radius: 50%;
               object-fit: contain;
             }
@@ -727,6 +755,8 @@ body:has(.dashboard) {
     left: -4rem;
   }
 }
+
+
 .profile-menu,
 .edit-menu {
   display: flex;
@@ -849,7 +879,7 @@ body:has(.dashboard) {
     border-radius: var(--form-border-radius);
     padding: 0.4rem;
   }
-
+  
   .notification-container {
     display: flex;
     align-items: center;
@@ -895,6 +925,7 @@ body:has(.dashboard) {
   background-color: white;
   box-shadow: var(--box-shadow);
   max-height: 25rem;
+  min-width: 16rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -907,6 +938,9 @@ body:has(.dashboard) {
     gap: 0.5rem;
     width: 100%;
     height: 100%;
+    @media (max-width: 786px) {
+      min-width: 18rem;
+    }
 
     .member-card-header {
       width: 100%;
@@ -1158,7 +1192,7 @@ body.darkmode {
     }
 
     .main-navigation {
-
+      
       a {
         color: rgba(255, 255, 255, 0.753);
 
@@ -1169,6 +1203,9 @@ body.darkmode {
         &:focus {
           background-color: var(--btn-primary);
         }
+
+        
+
       }
 
 
@@ -1225,6 +1262,12 @@ body.darkmode {
   .edit:hover,
   .changeStatus-btn:hover{
     background-color: var(--btn-grey-transparent)!important;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-container, .nav-container, .user-menu, .section-filter {
+    border: none!important;
   }
 }
 
@@ -1320,4 +1363,11 @@ body.darkmode {
       }
     }
   }
+}
+
+.notification-icon{
+  min-width: 2rem;
+}
+.darkmode-img{
+  min-width: 2rem;
 }
