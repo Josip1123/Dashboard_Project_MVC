@@ -462,12 +462,14 @@ body:has(.dashboard) {
     grid-area: dashboard;
     display: grid;
     grid-template-rows: max-content;
+ 
     overflow-y: scroll;
     gap: 1.5rem;
     padding: 1rem;
 
     @media (min-width: 768px) {
       grid-template-columns: 1fr;
+      justify-items: center;
     }
 
     @media (min-width: 992px) {

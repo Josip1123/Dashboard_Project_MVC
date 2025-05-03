@@ -1,8 +1,9 @@
-
+ @model Dashboard_MVC.Views.Models.DashboardViewModel
+ @using Business.Helpers
 @{
     ViewBag.Title = "Dashboard";
     Layout = "_Layout";
-    @model Dashboard_MVC.Views.Models.DashboardViewModel
+    var claimName = User.FindFirst("FirstName")?.Value;
 }
 
 @await Html.PartialAsync("Partials/_AddProjectForm")
@@ -30,6 +31,7 @@
         <div class="user-menu">
             @await Html.PartialAsync("Partials/_NotificationIcon")
             @await Html.PartialAsync("Partials/_DarkModeIcon")
+            <p>Hello, @Capitalizer.Capitalize(claimName!)</p>
             <div
                 class="profile-img-container"
                 role="button"

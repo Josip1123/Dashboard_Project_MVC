@@ -1,11 +1,11 @@
-
+@model Business.Models.RegistrationForm
 @{
     ViewBag.Title = "Signup";
     Layout = "_Layout";
 }
 
 <div class="center form-wrapper">
-            <form class="form" action="#" method="post">
+            <form asp-action="Signup" asp-controller="Login" class="form" id="regForm" method="post" novalidate>
                 <div class="form-header">
                     <h3>Create Account</h3>
                     <button class="login-with-x btn">Sign up with X</button>
@@ -13,56 +13,49 @@
                 <div class="or-line">
                     <p><span>OR</span></p>
                 </div>
-                <label for="firstName">Name:</label>
+                <label asp-for="FirstName">Name:</label>
                 <input
                     type="text"
                     id="firstName"
-                    name="firstName"
+                    asp-for="FirstName"
                     placeholder="Your first name"
-                    required
                 />
-                <label for="lastName">Last Name:</label>
+                <span class="error" asp-validation-for="FirstName"></span>
+                <label asp-for="LastName">Last Name:</label>
                 <input
                     type="text"
                     id="lastName"
-                    name="lastName"
+                    asp-for="LastName"
                     placeholder="Your last name"
-                    required
                 />
+                <span class="error" asp-validation-for="LastName"></span>
 
-                <label for="email">Email:</label>
+                <label asp-for="Email">Email:</label>
                 <input
                     type="email"
                     id="email"
-                    name="email"
+                    asp-for="Email"
                     placeholder="email@example.com"
-                    required
                 />
+                <span class="error" asp-validation-for="Email"></span>
 
-                <label for="password">Password:</label>
+                <label asp-for="Password">Password:</label>
                 <input
                     type="password"
                     id="password"
-                    name="password"
+                    asp-for="Password"
                     placeholder="Choose your password"
-                    required
                 />
-
-                <label for="confirmPassword">Confirm Password:</label>
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    placeholder="Confirm your password"
-                    required
-                />
+                <span class="error" asp-validation-for="Password"></span>
 
                 <div class="checkbox-container">
-                    <input type="checkbox" id="terms" name="terms" required />
-                    <label class="checkbox-label" for="terms">
+                    <input type="checkbox" id="terms" asp-for="Terms" />
+                    <span class="error" asp-validation-for="Terms"></span>
+                    <label class="checkbox-label" asp-for="Terms">
                         I accept
                         <span><a href="#">terms and conditions</a></span>
                     </label>
+                    
                 </div>
                 <button type="submit" class="btn btn-primary">
                     Create Account
