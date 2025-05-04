@@ -23,7 +23,12 @@
                 <div class="admin-form-container">
                     <form asp-action="MemberLogin" asp-controller="Login" class="form form-admin" method="POST" novalidate>
                         <div class="form-header">
-                            <h3>Login</h3>
+                            <div class="logo-container">
+                                <a asp-controller="Home" asp-action="Index">
+                                    <img src="~/img/Full.svg" alt="Alpha Logo" class="logo" />
+                                </a>
+                            </div>
+                            <h3>Admin Login</h3>
                         </div>
                         <label asp-for="Email">Email:</label>
                         <input
