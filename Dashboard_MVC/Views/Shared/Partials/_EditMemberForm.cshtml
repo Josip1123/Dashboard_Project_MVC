@@ -20,7 +20,7 @@
             <div class="img-preview-container">
                 <img id="imgEditPreview" src="@(string.IsNullOrEmpty(Model.EditMember.ImgUrl) ? Url.Content("~/img/user-placeholder.svg") : Model.EditMember.ImgUrl)" alt="Preview"/>
             </div>
-            <input type="file" class="ImageEditFile" asp-for="EditMember.ImageFile" accept="image/*" />
+            <input type="file" id="ImageEditFile" class="ImageEditFile" asp-for="EditMember.ImageFile" accept="image/*" />
         </div>
 
         <div class="name-wrapper">

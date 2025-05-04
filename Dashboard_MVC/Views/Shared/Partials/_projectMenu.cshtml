@@ -6,14 +6,18 @@
             <button class="edit-btn" id="editProjectBtn" type="submit">Edit</button>
         }
     </div>
-    <div class="complete">
-        @using (Html.BeginForm("ChangeStatusCompleted", "Dashboard", new { id = ViewData["ProjectId"] }, FormMethod.Post))
-        {
-            <button class="changeStatus-btn" id="CompleteProjectBtn" type="submit">
-                @((bool)ViewData["isCompleted"] && ViewData["isCompleted"] != null ? "Ongoing" : "Completed" )
-            </button>
-        }
-    </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="complete">
+            @using (Html.BeginForm("ChangeStatusCompleted", "Dashboard", new { id = ViewData["ProjectId"] }, FormMethod.Post))
+            {
+                <button class="changeStatus-btn" id="CompleteProjectBtn" type="submit">
+                    @((bool)ViewData["isCompleted"]! && ViewData["isCompleted"] != null ? "Ongoing" : "Completed" )
+                </button>
+            }
+        
+        </div>
+    }
     <hr />
     <div class="delete">
         @using (Html.BeginForm("Delete", "Dashboard", new { id = ViewData["ProjectId"] }, FormMethod.Post))

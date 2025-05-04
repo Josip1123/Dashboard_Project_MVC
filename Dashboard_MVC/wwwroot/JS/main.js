@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     
-    /*cookie handler med hjälp av chatGPT*/
+    /*cookie handler darkmode med hjälp av chatGPT*/
     
     function setDarkModeCookie(enable) {
         const maxAge = 60 * 60 * 24 * 365;

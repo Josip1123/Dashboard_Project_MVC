@@ -7,23 +7,23 @@ namespace Business.Helpers;
             int totalDays = (dateDue.Date - dateCreated.Date).Days;
             
 
-            if (totalDays < 31 && totalDays > 0)
+            if (totalDays <= 0)
+            {
+                return "Past Due"; 
+            }
+            
+            if (totalDays < 31)
             {
                 return $"{totalDays} days remaining";
                 
             }
-            else if (totalDays > 31 && totalDays < 365)
+            
+            if (totalDays <= 365)
             {
-                int monthsRemaining = (int)Math.Round(totalDays / 30.0);
+                int monthsRemaining = (int)Math.Round(totalDays / 30.44);
                 return $"{monthsRemaining} month(s) remaining";
             }
-            else if (totalDays <= 0)
-            {
-                return "Past Due"; 
-            }
-            else
-            {
-                return "1+ year remaining";
-            }
+
+            return "1+ year remaining";
         }
     }

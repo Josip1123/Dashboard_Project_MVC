@@ -221,9 +221,12 @@ select {
 /* Main */
 .form.google-login{
   padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .google-login{
-    padding: 0;
+    
       button{
         width: 100%;
         height: 100%;
@@ -314,18 +317,10 @@ select {
       position: relative;
       font-size: var(--smaller-font-size);
       font-weight: var(--semi-bold);
+      text-align: center;
 
-      &::before {
-        content: "";
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        display: inline-block;
-        background: url('./img/web_light_rd_na.svg') no-repeat center center;
-        background-size: contain;
-        width: 1.2rem;
-        height: 1.2rem;
+      button{
+        overflow: hidden;
       }
     }
   }
@@ -1071,6 +1066,10 @@ body:has(.dashboard) {
       
       .logo-container{
         margin-bottom: 2rem;
+        
+        .logo{
+          width: 6rem;
+        }
       }
       
       .form-admin{
@@ -1105,6 +1104,7 @@ body:has(.dashboard) {
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 99999999999999;
 }
 
 .accept-cookie, .decline-cookie{
@@ -1140,7 +1140,7 @@ body:has(.dashboard) {
 
 body.darkmode {
   background-color: black;
-
+  
   .time-remaining{
     color: black;
   }
@@ -1169,6 +1169,13 @@ body.darkmode {
     label,
     textarea {
       color: rgba(255, 255, 255, 0.781) !important;
+    }
+
+    .or-line {
+      color: white;
+      span {
+        background: black;
+      }
     }
 
   }
